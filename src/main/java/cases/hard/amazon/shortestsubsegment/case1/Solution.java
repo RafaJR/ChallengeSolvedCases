@@ -1,4 +1,4 @@
-package cases.hard.amazon.shortestsubsegment;
+package cases.hard.amazon.shortestsubsegment.case1;
 // https://www.hackerrank.com/challenges/sorted-subsegments/problem
 
 import java.util.Arrays;
