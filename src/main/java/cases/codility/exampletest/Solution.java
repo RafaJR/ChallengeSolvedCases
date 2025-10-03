@@ -1,4 +1,4 @@
-package cases.codilityexampletest;
+package cases.codility.exampletest;
 
 import java.util.stream.IntStream;
 
