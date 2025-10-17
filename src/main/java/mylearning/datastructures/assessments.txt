@@ -1,0 +1,52 @@
+Aquí tienes un enunciado sencillo, segmentado en métodos independientes, todos testeables unitariamente y adecuados para usar HashMap. No imprime nada por consola.
+
+Enunciado: Utilidades de conteo y consulta de palabras con HashMap
+
+Implementa en la clase pública los siguientes métodos estáticos. Todos trabajan sobre palabras normalizadas a minúsculas (sin tildes no es necesario; solo toLowerCase(Locale.ROOT)):
+
+1) countFrequencies(List<String> words) -> Map<String,Integer>
+- Devuelve un HashMap con la frecuencia de cada palabra.
+- Debe ignorar null y cadenas vacías o en blanco.
+- Palabras se normalizan a minúsculas.
+- Comportamiento esperado: para ["A","b","a","B","a"," "] devuelve {"a":3,"b":2}.
+
+2) getFrequency(Map<String,Integer> freq, String word) -> int
+- Devuelve cuántas veces aparece “word” en el mapa de frecuencias.
+- Normaliza “word” a minúsculas; si es null o en blanco, devuelve 0.
+- Si la palabra no existe, devuelve 0.
+
+3) mostFrequent(Map<String,Integer> freq) -> Optional<String>
+- Devuelve la palabra con mayor frecuencia.
+- En caso de empate, devuelve la lexicográficamente menor (orden natural de String).
+- Si el mapa está vacío o null, devuelve Optional.empty().
+
+4) removeOne(Map<String,Integer> freq, String word) -> boolean
+- Decrementa en 1 la frecuencia de “word”.
+- Si tras decrementar queda en 0, elimina la entrada del mapa.
+- Devuelve true si existía y se modificó; false si no existía o “word” es null/blanco.
+
+5) mergeFrequencies(Map<String,Integer> a, Map<String,Integer> b) -> Map<String,Integer>
+- Fusiona dos mapas de frecuencias devolviendo un nuevo HashMap con sumas por clave.
+- Cualquiera de los mapas puede ser null (trátalo como vacío).
+- No modifica los mapas de entrada.
+
+6) topK(Map<String,Integer> freq, int k) -> List<String>
+- Devuelve una lista con las k palabras más frecuentes, ordenadas por:
+  - mayor frecuencia,
+  - y en caso de empate, lexicográficamente menor.
+- Si k <= 0, devuelve lista vacía.
+- Si freq es null o vacío, devuelve lista vacía.
+
+Notas de validación (para tests)
+- Los métodos no deben lanzar excepciones por entradas null (salvo que se indique).
+- Todos los métodos son deterministas y no dependen de E/S.
+- Usa HashMap como estructura principal de conteos.
+- Normaliza con toLowerCase(Locale.ROOT) en los métodos que reciban palabras.
+
+Ejemplos de casos de prueba sugeridos (ideas)
+- countFrequencies: mezcla de mayúsculas, nulos, vacíos, y repetidos.
+- getFrequency: inexistente vs existente; palabra null/blanco.
+- mostFrequent: empate de frecuencias y orden lexicográfico.
+- removeOne: decremento hasta 0 con eliminación; palabra no existente.
+- mergeFrequencies: uno o ambos null; claves solapadas y disjuntas.
+- topK: k mayor que tamaño; k=0 o negativo; empates y orden estable esperado.
